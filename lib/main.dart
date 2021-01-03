@@ -39,10 +39,10 @@ class _MyHomePageState extends State<MyHomePage> {
 
   Widget _buildBody(BuildContext context) {
     return StreamBuilder<QuerySnapshot>(
-      stream: FirebaseFirestore.instance.collection('ratings').snapshots(),
+      stream: FirebaseFirestore.instance.collection('entities').snapshots(),
       builder: (context, snapshot) {
         if (!snapshot.hasData) return LinearProgressIndicator();
-        return _buildList(context, snapshot.data.documents);
+        return _buildList(context, snapshot.data.docs.take(300).toList());
       },
     );
   }
@@ -68,7 +68,7 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
         child: ListTile(
           title: Text(record.name),
-          trailing: Text(record.rating.toString()),
+          trailing: Text(record.rating),
           onTap: () => print(record),
         ),
       ),
@@ -79,14 +79,15 @@ class _MyHomePageState extends State<MyHomePage> {
 
 class Record {
   final String name;
-  final int rating;
+  final String rating;
   final DocumentReference reference;
 
   Record.fromMap(Map<String, dynamic> map, {this.reference})
-      : assert(map['name'] != null),
-        assert(map['rating'] != null),
-        name = map['name'],
-        rating = map['rating'];
+      : assert(map['NWSRS First Name'] != null),
+      assert(map['NWSRS Last Name'] != null),
+        assert(map['NWSRS\nRating'] != null),
+        name = map['NWSRS First Name'] + " " + map['NWSRS Last Name'],
+        rating = map['NWSRS\nRating'];
 
   Record.fromSnapshot(DocumentSnapshot snapshot)
       : this.fromMap(snapshot.data(), reference: snapshot.reference);
