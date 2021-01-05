@@ -47,5 +47,6 @@ app.*.map.json
 
 data/serviceAccountKey.json
 
+# Remove senstive files
 android/app/google-services.json
 ios/Runner/GoogleService-Info.plist
