@@ -42,6 +42,7 @@ class _MyHomePageState extends State<MyHomePage> {
       stream: FirebaseFirestore.instance.collection('entities').snapshots(),
       builder: (context, snapshot) {
         if (!snapshot.hasData) return LinearProgressIndicator();
+        //TODO: Before deploy remove the 300 limit, this is added to reduce load
         return _buildList(context, snapshot.data.docs.take(300).toList());
       },
     );
