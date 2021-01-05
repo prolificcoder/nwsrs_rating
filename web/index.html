@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <!--
     If you are serving your web app in a path other than the root, change the
@@ -24,11 +25,12 @@
   <link rel="apple-touch-icon" href="icons/Icon-192.png">
 
   <!-- Favicon -->
-  <link rel="icon" type="image/png" href="favicon.png"/>
+  <link rel="icon" type="image/png" href="favicon.png" />
 
   <title>nwsrs_rating</title>
   <link rel="manifest" href="manifest.json">
 </head>
+
 <body>
   <!-- This script installs service_worker.js to provide PWA functionality to
        application. For more information, see:
@@ -40,6 +42,28 @@
       });
     }
   </script>
+   <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-analytics.js"></script>
+
+  <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-auth.js"></script>
+   <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-firestore.js"></script>
+ 
+  <script>
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyBDDVLiGnSShODkrIqTPzNVG5mhdKQ7e7E",
+      authDomain: "news-s-fd940.firebaseapp.com",
+      projectId: "news-s-fd940",
+      storageBucket: "news-s-fd940.appspot.com",
+      messagingSenderId: "247400020735",
+      appId: "1:247400020735:web:c038457f6919eab9676aca",
+      measurementId: "G-5KQY1SFR20"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+  </script>
+ 
   <script src="main.dart.js" type="application/javascript"></script>
 </body>
+
 </html>
